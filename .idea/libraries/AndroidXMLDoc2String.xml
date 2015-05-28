@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="AndroidXMLDoc2String">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/app/libs/AndroidXMLDoc2String.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

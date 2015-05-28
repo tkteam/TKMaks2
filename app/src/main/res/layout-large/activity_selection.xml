@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#FFFFFF"
+    android:orientation="vertical" >
+
+    <include layout="@layout/search_bar" />
+
+    <ListView
+        android:id="@+id/listview"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@+id/rel_my_search"
+        android:cacheColorHint="#00000000"
+        android:fastScrollEnabled="true" >
+    </ListView>
+
+    <TextView
+        android:id="@+id/tvEmptyMessage2"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_marginTop="180dp"
+        android:background="#ffffff"
+        android:gravity="center"
+        android:paddingLeft="5dp"
+        android:textColor="#000000"
+        android:textSize="50sp"
+        android:textStyle="bold"
+        android:visibility="gone" />
+
+</RelativeLayout>
