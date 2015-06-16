@@ -1,7 +1,7 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 15
+    compileSdkVersion 22
     buildToolsVersion "22.0.1"
 
     compileOptions.encoding = 'windows-1254'
@@ -9,7 +9,7 @@ android {
     defaultConfig {
         applicationId "com.telekurye.mobileui"
         minSdkVersion 15
-        targetSdkVersion 21
+        targetSdkVersion 22
     }
     packagingOptions {
         exclude 'META-INF/DEPENDENCIES.txt'
@@ -34,6 +34,8 @@ android {
 dependencies {
 
     compile 'com.google.code.gson:gson:2.3.1'
+    compile 'com.android.support:appcompat-v7:22.1.1'
+    compile 'com.android.support:recyclerview-v7:+'
     compile 'com.google.android.gms:play-services:+'
     compile files('libs/AndroidXMLDoc2String.jar')
     compile files('libs/commons-codec-1.6.jar')
