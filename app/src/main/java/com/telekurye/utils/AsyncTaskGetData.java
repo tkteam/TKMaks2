@@ -96,8 +96,9 @@ public class AsyncTaskGetData extends AsyncTask<String, String, Boolean> {
 		// if (new ProcessStatuses().GetAllData().get(0).getStatusCode() == 200 && aVoid) {
 		if (!aVoid) {
 			try {
-				if ((progressDialog != null) && progressDialog.isShowing()) {
+				if (progressDialog != null && progressDialog.isShowing()) {
 					progressDialog.dismiss();
+					progressDialog = null;
 				}
 			}
 			catch (final IllegalArgumentException e) {

@@ -1,8 +1,6 @@
 package com.telekurye.data;
 
 import java.sql.SQLException;
-import java.text.DateFormat;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -13,7 +11,7 @@ import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.stmt.DeleteBuilder;
 import com.j256.ormlite.table.DatabaseTable;
 import com.telekurye.data.typetoken.SyncRequest;
-import com.telekurye.database.DatabaseHelper;
+import com.telekurye.maks2.database.DatabaseHelper;
 import com.telekurye.tools.Tools;
 
 @DatabaseTable(tableName = "streettypes")

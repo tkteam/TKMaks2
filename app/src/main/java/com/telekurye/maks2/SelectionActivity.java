@@ -1,4 +1,4 @@
-package com.telekurye.customlist;
+package com.telekurye.maks2;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -8,6 +8,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
@@ -22,27 +23,27 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.telekurye.mobileui.FeedBack;
 import com.telekurye.mobileui.R;
 import com.telekurye.tools.Info;
 import com.telekurye.utils.AsyncTaskGetData;
 
-public class SelectionActivity extends Activity implements TextWatcher,
-		OnItemClickListener {
+public class SelectionActivity extends Activity implements TextWatcher, OnItemClickListener {
 
-	ListView listView;
-	TextView tvHeader;
-	List<Items> items;
-	List<Items> filterArray = new ArrayList<Items>();
-	ArrayList<Item> itemsSection = new ArrayList<Item>();
+	ListView			listView;
+	TextView			tvHeader;
+	List<Items>			items;
+	List<Items>			filterArray		= new ArrayList<Items>();
+	ArrayList<Item>		itemsSection	= new ArrayList<Item>();
 
-	EditText mySearch;
-	String searchString;
-	AlertDialog alert = null;
-	NamesAdapter objAdapter = null;
+	EditText			mySearch;
+	String				searchString;
+	AlertDialog			alert			= null;
+	NamesAdapter		objAdapter		= null;
 
-	private int countyId = 0;
-	private int level = 0;
-	private TextView tvEmptyMessage;
+	private int			countyId		= 0;
+	private int			level			= 0;
+	private TextView	tvEmptyMessage;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -58,7 +59,8 @@ public class SelectionActivity extends Activity implements TextWatcher,
 
 		if (isNetworkAvailable()) {
 			new MyTask().execute(EType.City.getId());
-		} else {
+		}
+		else {
 			showToast("Ýnternet Baðlantýsý Bulunamadý!");
 			this.finish();
 		}
@@ -84,10 +86,12 @@ public class SelectionActivity extends Activity implements TextWatcher,
 			if (value[0] == EType.City.getId()) {
 				level = 1;
 				items = new MaksLocation().GetCities();
-			} else if (value[0] == EType.County.getId()) {
+			}
+			else if (value[0] == EType.County.getId()) {
 				level = 2;
 				items = new MaksLocation().GetCounties(value[1]);
-			} else if (value[0] == EType.District.getId()) {
+			}
+			else if (value[0] == EType.District.getId()) {
 				level = 3;
 				items = new MaksLocation().GetDistricts(value[1]);
 			}
@@ -104,13 +108,16 @@ public class SelectionActivity extends Activity implements TextWatcher,
 			if (null == items || items.size() == 0) {
 				showToast("Veri Bulunamadý!");
 				SelectionActivity.this.finish();
-			} else {
+			}
+			else {
 
 				if (level == 1) {
 					tvHeader.setText("ÝL SEÇÝNÝZ");
-				} else if (level == 2) {
+				}
+				else if (level == 2) {
 					tvHeader.setText("ÝLÇE SEÇÝNÝZ");
-				} else if (level == 3) {
+				}
+				else if (level == 3) {
 					tvHeader.setText("MAHALLE SEÇÝNÝZ");
 				}
 
@@ -126,27 +133,24 @@ public class SelectionActivity extends Activity implements TextWatcher,
 	@Override
 	public void afterTextChanged(Editable s) {
 		filterArray.clear();
-		searchString = mySearch.getText().toString().trim()
-				.replaceAll("\\s", "");
+		searchString = mySearch.getText().toString().trim().replaceAll("\\s", "");
 
-		if (items != null && items.size() > 0 && searchString != null
-				&& searchString.length() > 0) {
+		if (items != null && items.size() > 0 && searchString != null && searchString.length() > 0) {
 			for (Items name : items) {
-				if (name.getName().toLowerCase()
-						.startsWith(searchString.toLowerCase())) {
+				if (name.getName().toLowerCase().startsWith(searchString.toLowerCase())) {
 					filterArray.add(name);
 				}
 			}
 			setAdapterToListview(filterArray);
-		} else {
+		}
+		else {
 			filterArray.clear();
 			setAdapterToListview(items);
 		}
 	}
 
 	@Override
-	public void beforeTextChanged(CharSequence s, int start, int count,
-			int after) {
+	public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 	}
 
 	// Here Data is Filtered!!!
@@ -178,7 +182,8 @@ public class SelectionActivity extends Activity implements TextWatcher,
 						objSectionItem.setSectionLetter(firstChar);
 						itemsSection.add(objSectionItem);
 					}
-				} else {
+				}
+				else {
 					ItemsSections objSectionItem = new ItemsSections();
 					objSectionItem.setSectionLetter(firstChar);
 					itemsSection.add(objSectionItem);
@@ -188,7 +193,8 @@ public class SelectionActivity extends Activity implements TextWatcher,
 
 				itemsSection.add(objItem);
 			}
-		} else {
+		}
+		else {
 
 			tvEmptyMessage.setText("Sonuç Bulunamadý!");
 			listView.setEmptyView(tvEmptyMessage);
@@ -199,7 +205,8 @@ public class SelectionActivity extends Activity implements TextWatcher,
 		if (null == objAdapter) {
 			objAdapter = new NamesAdapter(SelectionActivity.this, itemsSection);
 			listView.setAdapter(objAdapter);
-		} else {
+		}
+		else {
 			objAdapter.notifyDataSetChanged();
 		}
 
@@ -213,8 +220,7 @@ public class SelectionActivity extends Activity implements TextWatcher,
 	// OnListClick,Get Name...
 
 	@Override
-	public void onItemClick(AdapterView<?> parent, View view, int position,
-			long id) {
+	public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
 		Item item = itemsSection.get(position);
 
@@ -228,23 +234,25 @@ public class SelectionActivity extends Activity implements TextWatcher,
 				countyId = items.getId();
 				Info.CityName = items.getName();
 				new MyTask().execute(EType.County.getId(), items.getId());
-			} else if (items.getTypeId() == EType.County.getId()) {
+			}
+			else if (items.getTypeId() == EType.County.getId()) {
 				Info.CountyName = items.getName();
 				new MyTask().execute(EType.District.getId(), items.getId());
-			} else if (items.getTypeId() == EType.District.getId()) {
+			}
+			else if (items.getTypeId() == EType.District.getId()) {
 				Info.DistrictName = items.getName();
 				Info.DISTRICT_ID = Integer.toString(items.getId());
 
 				if (Info.DISTRICT_ID != null && !Info.DISTRICT_ID.equals("")) {
-					AsyncTaskGetData asyncGetData = new AsyncTaskGetData(
-							SelectionActivity.this);
-					asyncGetData.execute(Info.DISTRICT_ID);
+					Intent i1 = new Intent(SelectionActivity.this, FeedBack.class);
+					startActivity(i1);
 				}
 
 			}
 
 			// showToast(objSchoolname.getName() + " " + objSchoolname.getId());
-		} else {
+		}
+		else {
 			ItemsSections objSectionsName = (ItemsSections) item;
 			// showToast("Section :: " +
 			// String.valueOf(objSectionsName.getSectionLetter()));
@@ -258,7 +266,8 @@ public class SelectionActivity extends Activity implements TextWatcher,
 		ConnectivityManager connectivity = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
 		if (connectivity == null) {
 			return false;
-		} else {
+		}
+		else {
 			NetworkInfo[] info = connectivity.getAllNetworkInfo();
 			if (info != null) {
 				for (int i = 0; i < info.length; i++) {
@@ -281,27 +290,27 @@ public class SelectionActivity extends Activity implements TextWatcher,
 			alert_back.setTitle("Çýkýþ?");
 			alert_back.setMessage("Çýkmak Ýstediðinize Emin misiniz?");
 
-			alert_back.setButton("Hayýr",
-					new DialogInterface.OnClickListener() {
+			alert_back.setButton("Hayýr", new DialogInterface.OnClickListener() {
 
-						@Override
-						public void onClick(DialogInterface dialog, int which) {
-							dialog.dismiss();
-						}
-					});
+				@Override
+				public void onClick(DialogInterface dialog, int which) {
+					dialog.dismiss();
+				}
+			});
 
-			alert_back.setButton2("Evet",
-					new DialogInterface.OnClickListener() {
+			alert_back.setButton2("Evet", new DialogInterface.OnClickListener() {
 
-						@Override
-						public void onClick(DialogInterface dialog, int which) {
-							SelectionActivity.this.finish();
-						}
-					});
+				@Override
+				public void onClick(DialogInterface dialog, int which) {
+					SelectionActivity.this.finish();
+				}
+			});
 			alert_back.show();
-		} else if (level == 2) {
+		}
+		else if (level == 2) {
 			new MyTask().execute(EType.City.getId());
-		} else if (level == 3) {
+		}
+		else if (level == 3) {
 			new MyTask().execute(EType.County.getId(), countyId);
 		}
 	}

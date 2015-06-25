@@ -10,10 +10,10 @@ import android.os.AsyncTask;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
-import com.telekurye.customlist.SelectionActivity;
+import com.telekurye.maks2.SelectionActivity;
 import com.telekurye.data.Person;
 import com.telekurye.data.typetoken.SyncResult;
-import com.telekurye.database.DatabaseHelperMap;
+import com.telekurye.maks2.database.DatabaseHelperMap;
 import com.telekurye.tools.Info;
 import com.telekurye.tools.Tools;
 

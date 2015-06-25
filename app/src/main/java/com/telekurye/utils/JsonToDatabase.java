@@ -21,7 +21,7 @@ import com.telekurye.data.BasarShapeId;
 import com.telekurye.data.BuildingTypes;
 import com.telekurye.data.Earnings;
 import com.telekurye.data.IMission;
-import com.telekurye.data.MissionControl;
+import com.telekurye.maks2.MissionControl;
 import com.telekurye.data.MissionsBuildings;
 import com.telekurye.data.MissionsStreets;
 import com.telekurye.data.Person;
@@ -30,7 +30,7 @@ import com.telekurye.data.StreetTypes;
 import com.telekurye.data.VersionUpdate;
 import com.telekurye.data.typetoken.SyncRequest;
 import com.telekurye.data.typetoken.SyncResult;
-import com.telekurye.database.DatabaseHelper;
+import com.telekurye.maks2.database.DatabaseHelper;
 import com.telekurye.tools.Info;
 import com.telekurye.tools.LiveData;
 import com.telekurye.tools.Tools;
@@ -109,9 +109,9 @@ public class JsonToDatabase {
 			}.getType();
 			SyncResult<ArrayList<MissionsBuildings>> missions = gson.fromJson(json, listType);
 
-			ms = new ArrayList<MissionsStreets>();
+			ms = new ArrayList<>();
 
-			mb = new ArrayList<MissionsBuildings>();
+			mb = new ArrayList<>();
 
 			if (missions == null || missions.getProcessStatus() != 200) {
 				return false;

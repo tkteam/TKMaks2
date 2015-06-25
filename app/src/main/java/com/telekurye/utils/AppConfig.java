@@ -18,16 +18,13 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Environment;
 import android.widget.Toast;
 
-import com.telekurye.database.DatabaseHelper;
+import com.telekurye.maks2.database.DatabaseHelper;
 import com.telekurye.mobileui.Login;
-import com.telekurye.mobileui.R;
 import com.telekurye.tools.Info;
 import com.telekurye.tools.Tools;
 

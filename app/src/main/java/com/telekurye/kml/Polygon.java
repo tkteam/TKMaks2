@@ -2,8 +2,6 @@ package com.telekurye.kml;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.LinkedList;
 import java.util.List;
 
 import android.content.Context;
@@ -13,13 +11,8 @@ import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.stmt.PreparedQuery;
 import com.j256.ormlite.stmt.QueryBuilder;
-import com.j256.ormlite.stmt.Where;
 import com.j256.ormlite.table.DatabaseTable;
-import com.telekurye.data.MissionControl;
-import com.telekurye.database.DatabaseHelper;
-import com.telekurye.database.DatabaseHelperMap;
-import com.telekurye.database.DatabaseHelperMap;
-import com.telekurye.tools.Info;
+import com.telekurye.maks2.database.DatabaseHelperMap;
 import com.telekurye.tools.Tools;
 
 @DatabaseTable(tableName = "Polygon")
@@ -36,6 +29,9 @@ public class Polygon {
 	// @DatabaseField public Long streetid;
 	@DatabaseField public Long					districtid;
 	@DatabaseField public Long					villageid;
+
+	// @DatabaseField public Integer BSKOD;
+	// @DatabaseField public String ACIKLAMA;
 
 	public ArrayList<LatLng>					coors;
 

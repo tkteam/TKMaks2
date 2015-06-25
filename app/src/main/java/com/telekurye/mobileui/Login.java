@@ -21,8 +21,6 @@ import android.widget.TextView;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
-import com.telekurye.database.DatabaseHelper;
-import com.telekurye.database.DatabaseHelperMap;
 import com.telekurye.tools.Info;
 import com.telekurye.tools.Tools;
 import com.telekurye.utils.AsyncTaskLogin;

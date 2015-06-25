@@ -1,7 +1,6 @@
-package com.telekurye.database;
+package com.telekurye.maks2.database;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -10,14 +9,14 @@ import java.sql.SQLException;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteException;
 import android.util.Log;
 
 import com.j256.ormlite.android.apptools.OrmLiteSqliteOpenHelper;
 import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.support.ConnectionSource;
 import com.j256.ormlite.table.TableUtils;
-import com.telekurye.customlist.MaksLocation;
+import com.telekurye.kml.buildingtypes;
+import com.telekurye.maks2.MaksLocation;
 import com.telekurye.kml.Polygon;
 import com.telekurye.mobileui.Login;
 import com.telekurye.tools.Info;
@@ -80,6 +79,7 @@ public class DatabaseHelperMap extends OrmLiteSqliteOpenHelper {
 	}
 
 	private Dao<Polygon, Integer>		PolygonDataHelper		= null;
+	private Dao<buildingtypes, Integer>	buildingtypesDataHelper	= null;
 	private Dao<MaksLocation, Integer>	MaksLocationDataHelper	= null;
 
 	@Override
@@ -87,7 +87,8 @@ public class DatabaseHelperMap extends OrmLiteSqliteOpenHelper {
 		try {
 			TableUtils.createTable(connectionSource, Polygon.class);
 			TableUtils.createTable(connectionSource, MaksLocation.class);
-		} catch (java.sql.SQLException e) {
+		}
+		catch (java.sql.SQLException e) {
 			Tools.saveErrors(e);
 		}
 	}
@@ -96,8 +97,10 @@ public class DatabaseHelperMap extends OrmLiteSqliteOpenHelper {
 		ConnectionSource connectionSource = getConnectionSource();
 		try {
 			TableUtils.clearTable(connectionSource, Polygon.class);
+			TableUtils.clearTable(connectionSource, buildingtypes.class);
 			TableUtils.clearTable(connectionSource, MaksLocation.class);
-		} catch (SQLException e) {
+		}
+		catch (SQLException e) {
 			Tools.saveErrors(e);
 		}
 	}
@@ -106,8 +109,10 @@ public class DatabaseHelperMap extends OrmLiteSqliteOpenHelper {
 		ConnectionSource connectionSource = getConnectionSource();
 		try {
 			TableUtils.dropTable(connectionSource, Polygon.class, true);
+			TableUtils.dropTable(connectionSource, buildingtypes.class, true);
 			TableUtils.dropTable(connectionSource, MaksLocation.class, true);
-		} catch (SQLException e) {
+		}
+		catch (SQLException e) {
 			Tools.saveErrors(e);
 		}
 	}
@@ -118,10 +123,12 @@ public class DatabaseHelperMap extends OrmLiteSqliteOpenHelper {
 			Log.i(DatabaseHelperMap.class.getName(), "onUpgrade");
 
 			TableUtils.dropTable(connectionSource, Polygon.class, true);
+			TableUtils.dropTable(connectionSource, buildingtypes.class, true);
 			TableUtils.dropTable(connectionSource, MaksLocation.class, true);
 
 			onCreate(db, connectionSource);
-		} catch (java.sql.SQLException e) {
+		}
+		catch (java.sql.SQLException e) {
 			Tools.saveErrors(e);
 
 		}
@@ -132,6 +139,13 @@ public class DatabaseHelperMap extends OrmLiteSqliteOpenHelper {
 			PolygonDataHelper = getDao(Polygon.class);
 		}
 		return PolygonDataHelper;
+	}
+
+	public Dao<buildingtypes, Integer> getbuildingtypesDataHelper() throws SQLException {
+		if (buildingtypesDataHelper == null) {
+			buildingtypesDataHelper = getDao(buildingtypes.class);
+		}
+		return buildingtypesDataHelper;
 	}
 
 	public Dao<MaksLocation, Integer> getMaksLocationDataHelper() throws SQLException {

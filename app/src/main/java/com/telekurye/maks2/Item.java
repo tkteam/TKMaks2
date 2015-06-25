@@ -1,4 +1,4 @@
-package com.telekurye.customlist;
+package com.telekurye.maks2;
 
 public interface Item {
 	public boolean isSectionItem();

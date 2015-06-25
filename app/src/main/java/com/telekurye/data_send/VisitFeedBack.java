@@ -12,7 +12,7 @@ import com.j256.ormlite.stmt.PreparedQuery;
 import com.j256.ormlite.stmt.QueryBuilder;
 import com.j256.ormlite.table.DatabaseTable;
 import com.telekurye.data.typetoken.SyncRequest;
-import com.telekurye.database.DatabaseHelper;
+import com.telekurye.maks2.database.DatabaseHelper;
 import com.telekurye.tools.Tools;
 
 @DatabaseTable(tableName = "visitfeedback")
@@ -212,10 +212,10 @@ public class VisitFeedBack {
 
 	/*
 	 * public void DeleteRow(int deleteId) { try {
-	 * 
+	 *
 	 * Dao<VisitFeedBack, Integer> dao = DatabaseHelper.getDbHelper().getVisitFeedBackDataHelper(); DeleteBuilder<VisitFeedBack, Integer> deleteBuilder = dao.deleteBuilder();
 	 * deleteBuilder.where().eq("UserDailyMissionId", deleteId); deleteBuilder.delete(); } catch (Exception e) { Tools.customSendError(e);
-	 * 
+	 *
 	 * } }
 	 */
 

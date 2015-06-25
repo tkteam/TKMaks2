@@ -1,4 +1,4 @@
-package com.telekurye.customlist;
+package com.telekurye.maks2;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -9,7 +9,7 @@ import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.stmt.PreparedQuery;
 import com.j256.ormlite.stmt.QueryBuilder;
 import com.j256.ormlite.table.DatabaseTable;
-import com.telekurye.database.DatabaseHelperMap;
+import com.telekurye.maks2.database.DatabaseHelperMap;
 import com.telekurye.tools.Tools;
 
 @DatabaseTable(tableName = "locationDatabase")

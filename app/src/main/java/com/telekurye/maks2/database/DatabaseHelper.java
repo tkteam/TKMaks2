@@ -1,15 +1,9 @@
-package com.telekurye.database;
+package com.telekurye.maks2.database;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
 import java.sql.SQLException;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteException;
 import android.util.Log;
 
 import com.j256.ormlite.android.apptools.OrmLiteSqliteOpenHelper;
@@ -20,7 +14,7 @@ import com.telekurye.data.BasarShapeId;
 import com.telekurye.data.BuildingTypes;
 import com.telekurye.data.FinishedShapeHistory;
 import com.telekurye.data.Locations;
-import com.telekurye.data.MissionControl;
+import com.telekurye.maks2.MissionControl;
 import com.telekurye.data.MissionsBuildings;
 import com.telekurye.data.MissionsStreets;
 import com.telekurye.data.Person;

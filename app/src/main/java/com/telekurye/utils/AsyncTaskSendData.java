@@ -12,7 +12,7 @@ import android.app.Activity;
 import android.app.ProgressDialog;
 import android.os.AsyncTask;
 
-import com.telekurye.data.MissionControl;
+import com.telekurye.maks2.MissionControl;
 import com.telekurye.tools.Info;
 import com.telekurye.tools.Tools;
 

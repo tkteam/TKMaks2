@@ -22,7 +22,7 @@ import com.j256.ormlite.stmt.Where;
 import com.j256.ormlite.table.DatabaseTable;
 import com.telekurye.data.typetoken.SyncRequest;
 import com.telekurye.data_send.DistrictIdFeedBack;
-import com.telekurye.database.DatabaseHelper;
+import com.telekurye.maks2.database.DatabaseHelper;
 import com.telekurye.tools.Info;
 import com.telekurye.tools.Tools;
 import com.telekurye.utils.JSONHelper;

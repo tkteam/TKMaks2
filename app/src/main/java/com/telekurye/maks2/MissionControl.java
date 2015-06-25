@@ -1,4 +1,4 @@
-package com.telekurye.data;
+package com.telekurye.maks2;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -9,20 +9,21 @@ import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.stmt.PreparedQuery;
 import com.j256.ormlite.stmt.QueryBuilder;
 import com.j256.ormlite.table.DatabaseTable;
-import com.telekurye.database.DatabaseHelper;
+import com.telekurye.maks2.database.DatabaseHelper;
 import com.telekurye.tools.Tools;
 
 @DatabaseTable(tableName = "MissionControl")
 public class MissionControl {
 
 	@DatabaseField(id = true) private int	UDMId;
-
 	@DatabaseField private int				FloorCount;
 	@DatabaseField private String			BuildingNumber;
 	@DatabaseField private int				IndependentSectionCount;
 	@DatabaseField private boolean			IsGreen;
 	@DatabaseField private int				ShapeId;
 	@DatabaseField private int				TypeId;
+	@DatabaseField private String			BinaTipi;
+	@DatabaseField private String			BagimsizBolumTipi;
 
 	// @DatabaseField private String Address;
 
@@ -118,7 +119,7 @@ public class MissionControl {
 
 	public List<MissionControl> GetMissionsByShapeId(int shapeId) {
 
-		List<MissionControl> data = new ArrayList<MissionControl>();
+		List<MissionControl> data = new ArrayList<>();
 
 		try {
 
@@ -138,7 +139,7 @@ public class MissionControl {
 
 	public List<MissionControl> getGreenShapeList() {
 
-		List<MissionControl> data = new ArrayList<MissionControl>();
+		List<MissionControl> data = new ArrayList<>();
 
 		try {
 
@@ -288,12 +289,19 @@ public class MissionControl {
 		TypeId = typeId;
 	}
 
-	// public String getAddress() {
-	// return Address;
-	// }
-	//
-	// public void setAddress(String address) {
-	// Address = address;
-	// }
+	public String getBinaTipi() {
+		return BinaTipi;
+	}
 
+	public void setBinaTipi(String binaTipi) {
+		BinaTipi = binaTipi;
+	}
+
+	public String getBagimsizBolumTipi() {
+		return BagimsizBolumTipi;
+	}
+
+	public void setBagimsizBolumTipi(String bagimsizBolumTipi) {
+		BagimsizBolumTipi = bagimsizBolumTipi;
+	}
 }
