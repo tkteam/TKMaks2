@@ -5,7 +5,7 @@ android {
         config {
             keyAlias 'telekurye'
             keyPassword 'telekurye123..'
-            storeFile file('C:/Users/sefagurel/Desktop/TKMaks2/key/key')
+            storeFile file('../key/key')
             storePassword 'telekurye123..'
         }
     }
