@@ -2,14 +2,14 @@ package com.telekurye.maks2;
 
 import java.util.ArrayList;
 
-import com.telekurye.mobileui.R;
-
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
+
+import com.telekurye.mobileui.R;
 
 public class NamesAdapter extends ArrayAdapter<Item> {
 

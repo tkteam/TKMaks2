@@ -9,18 +9,15 @@ import java.sql.SQLException;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
-import android.util.Log;
 
 import com.j256.ormlite.android.apptools.OrmLiteSqliteOpenHelper;
 import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.support.ConnectionSource;
-import com.j256.ormlite.table.TableUtils;
 import com.telekurye.kml.buildingtypes;
 import com.telekurye.maks2.MaksLocation;
-import com.telekurye.kml.Polygon;
+import com.telekurye.maks2.ShapeTable;
 import com.telekurye.mobileui.Login;
 import com.telekurye.tools.Info;
-import com.telekurye.tools.Tools;
 
 public class DatabaseHelperMap extends OrmLiteSqliteOpenHelper {
 
@@ -78,67 +75,68 @@ public class DatabaseHelperMap extends OrmLiteSqliteOpenHelper {
 		// return new DatabaseHelper(Login.AppContext);
 	}
 
-	private Dao<Polygon, Integer>		PolygonDataHelper		= null;
+	private Dao<ShapeTable, Integer>	ShapeTableDataHelper	= null;
 	private Dao<buildingtypes, Integer>	buildingtypesDataHelper	= null;
 	private Dao<MaksLocation, Integer>	MaksLocationDataHelper	= null;
 
 	@Override
 	public void onCreate(SQLiteDatabase db, ConnectionSource connectionSource) {
-		try {
-			TableUtils.createTable(connectionSource, Polygon.class);
-			TableUtils.createTable(connectionSource, MaksLocation.class);
-		}
-		catch (java.sql.SQLException e) {
-			Tools.saveErrors(e);
-		}
-	}
-
-	public void clearDatabase() {
-		ConnectionSource connectionSource = getConnectionSource();
-		try {
-			TableUtils.clearTable(connectionSource, Polygon.class);
-			TableUtils.clearTable(connectionSource, buildingtypes.class);
-			TableUtils.clearTable(connectionSource, MaksLocation.class);
-		}
-		catch (SQLException e) {
-			Tools.saveErrors(e);
-		}
-	}
-
-	public void deleteDatabase() {
-		ConnectionSource connectionSource = getConnectionSource();
-		try {
-			TableUtils.dropTable(connectionSource, Polygon.class, true);
-			TableUtils.dropTable(connectionSource, buildingtypes.class, true);
-			TableUtils.dropTable(connectionSource, MaksLocation.class, true);
-		}
-		catch (SQLException e) {
-			Tools.saveErrors(e);
-		}
+		// try {
+		// // TableUtils.createTable(connectionSource, ShapeTable.class);
+		// TableUtils.createTable(connectionSource, buildingtypes.class);
+		// TableUtils.createTable(connectionSource, MaksLocation.class);
+		// }
+		// catch (java.sql.SQLException e) {
+		// Tools.saveErrors(e);
+		// }
 	}
 
 	@Override
 	public void onUpgrade(SQLiteDatabase db, ConnectionSource connectionSource, int oldVersion, int newVersion) {
-		try {
-			Log.i(DatabaseHelperMap.class.getName(), "onUpgrade");
-
-			TableUtils.dropTable(connectionSource, Polygon.class, true);
-			TableUtils.dropTable(connectionSource, buildingtypes.class, true);
-			TableUtils.dropTable(connectionSource, MaksLocation.class, true);
-
-			onCreate(db, connectionSource);
-		}
-		catch (java.sql.SQLException e) {
-			Tools.saveErrors(e);
-
-		}
+		// try {
+		// Log.i(DatabaseHelperMap.class.getName(), "onUpgrade");
+		//
+		// TableUtils.dropTable(connectionSource, ShapeTable.class, true);
+		// TableUtils.dropTable(connectionSource, buildingtypes.class, true);
+		// TableUtils.dropTable(connectionSource, MaksLocation.class, true);
+		//
+		// onCreate(db, connectionSource);
+		// }
+		// catch (java.sql.SQLException e) {
+		// Tools.saveErrors(e);
+		//
+		// }
 	}
 
-	public Dao<Polygon, Integer> getPolygonDataHelper() throws SQLException {
-		if (PolygonDataHelper == null) {
-			PolygonDataHelper = getDao(Polygon.class);
+	// public void clearDatabase() {
+	// ConnectionSource connectionSource = getConnectionSource();
+	// try {
+	// // TableUtils.clearTable(connectionSource, ShapeTable.class);
+	// TableUtils.clearTable(connectionSource, buildingtypes.class);
+	// TableUtils.clearTable(connectionSource, MaksLocation.class);
+	// }
+	// catch (SQLException e) {
+	// Tools.saveErrors(e);
+	// }
+	// }
+	//
+	// public void deleteDatabase() {
+	// ConnectionSource connectionSource = getConnectionSource();
+	// try {
+	// // TableUtils.dropTable(connectionSource, ShapeTable.class, true);
+	// TableUtils.dropTable(connectionSource, buildingtypes.class, true);
+	// TableUtils.dropTable(connectionSource, MaksLocation.class, true);
+	// }
+	// catch (SQLException e) {
+	// Tools.saveErrors(e);
+	// }
+	// }
+
+	public Dao<ShapeTable, Integer> getShapeTableDataHelper() throws SQLException {
+		if (ShapeTableDataHelper == null) {
+			ShapeTableDataHelper = getDao(ShapeTable.class);
 		}
-		return PolygonDataHelper;
+		return ShapeTableDataHelper;
 	}
 
 	public Dao<buildingtypes, Integer> getbuildingtypesDataHelper() throws SQLException {

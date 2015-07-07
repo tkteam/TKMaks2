@@ -29,7 +29,7 @@ public class MaksLocation {
 
 	public List<Items> GetCities() {
 
-		List<Items> data = new ArrayList<Items>();
+		List<Items> data = new ArrayList<>();
 
 		try {
 
@@ -57,7 +57,7 @@ public class MaksLocation {
 
 	public List<Items> GetCounties(int CityId) {
 
-		List<Items> data = new ArrayList<Items>();
+		List<Items> data = new ArrayList<>();
 
 		try {
 

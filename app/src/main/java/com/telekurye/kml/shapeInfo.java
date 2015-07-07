@@ -8,6 +8,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import com.telekurye.maks2.ShapeTable;
+
 /**
  * Created by sefagurel on 18.06.2015.
  */
@@ -29,15 +31,15 @@ public class shapeInfo {
 		this.count = count;
 	}
 
-	public List<shapeInfo> GetList(Polygon selectedPolygon) {
+	public List<shapeInfo> GetList(int shapeId) {
 
-		basarId = selectedPolygon.polygonid;
+		// basarId = selectedPolygon.polygonid;
 
-		List<buildingtypes> bTypes = new buildingtypes().GetDataByBasarId(basarId);
+		List<ShapeTable> bTypes = new ShapeTable().GetDataByShapeId(shapeId);
 		List<shapeInfo> sinfo = new ArrayList<>();
 
 		for (int i = 0; i < bTypes.size(); i++) {
-			if (bTypes.get(i).ACIKLAMA.equalsIgnoreCase("NULL")) {
+			if (bTypes.get(i).Description.equalsIgnoreCase("NULL")) {
 				bTypes.remove(i);
 			}
 		}
@@ -47,9 +49,18 @@ public class shapeInfo {
 
 			List<Integer> intlist = new ArrayList<>();
 
-			for (buildingtypes bType : bTypes) {
-				bt.put(bType.BSKOD, bType.ACIKLAMA);
-				intlist.add(bType.BSKOD);
+			for (ShapeTable bType : bTypes) {
+
+				char[] ascii = bType.Description.toCharArray();
+
+				int i = 0;
+
+				for (char c : ascii) {
+					i += (int) c;
+				}
+
+				bt.put(i, bType.Description);
+				intlist.add(i);
 			}
 
 			Set<Integer> unique = new HashSet<>(intlist);

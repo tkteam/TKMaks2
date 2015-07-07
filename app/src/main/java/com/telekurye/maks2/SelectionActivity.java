@@ -1,5 +1,6 @@
 package com.telekurye.maks2;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -26,7 +27,6 @@ import android.widget.Toast;
 import com.telekurye.mobileui.FeedBack;
 import com.telekurye.mobileui.R;
 import com.telekurye.tools.Info;
-import com.telekurye.utils.AsyncTaskGetData;
 
 public class SelectionActivity extends Activity implements TextWatcher, OnItemClickListener {
 
@@ -86,6 +86,12 @@ public class SelectionActivity extends Activity implements TextWatcher, OnItemCl
 			if (value[0] == EType.City.getId()) {
 				level = 1;
 				items = new MaksLocation().GetCities();
+				// try {
+				// items = new ShapeTable().getColumn("CityId");
+				// }
+				// catch (SQLException e) {
+				// e.printStackTrace();
+				// }
 			}
 			else if (value[0] == EType.County.getId()) {
 				level = 2;

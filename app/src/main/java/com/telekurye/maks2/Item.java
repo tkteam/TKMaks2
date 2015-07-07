@@ -6,9 +6,9 @@ public interface Item {
 
 class Items implements Item, Comparable<Items> {
 
-	private int id;
-	private String name;
-	private int typeId;
+	private int		id;
+	private String	name;
+	private int		typeId;
 
 	public String getName() {
 		return name;
@@ -47,7 +47,7 @@ class Items implements Item, Comparable<Items> {
 
 class ItemsSections implements Item {
 
-	private char sectionLetter;
+	private char	sectionLetter;
 
 	public char getSectionLetter() {
 		return sectionLetter;
